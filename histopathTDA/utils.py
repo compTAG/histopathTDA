@@ -4,17 +4,18 @@ Includes:
 =========
 
   - A function to load an example image
+  - Row major index helpers
 
 """
 
-import pkg_resources  # type: ignore
+from pkg_resources import resource_stream  # type: ignore
 from PIL import Image  # type: ignore
 from histopathTDA.image import Im
 
 
 def load_example_image():
     """Return an example Gleason 3 grade histopathology image."""
-    stream = pkg_resources.resource_stream(__name__, '_assets/example_images/g3.png')
+    stream = resource_stream(__name__, '_assets/example_images/g3.png')
     img = Image.open(stream)
     ex_im = Im(img)
     return ex_im

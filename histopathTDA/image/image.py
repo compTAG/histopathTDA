@@ -63,6 +63,10 @@ class Im:
         """Grayscale predicate"""
         return self.image.mode == "L"
 
+    def is_binary(self):
+        """Binary predicate"""
+        return self.image.mode == "1"
+
     def save(self, filename):
         """
         Converts image to grayscale.
@@ -74,6 +78,12 @@ class Im:
         Converts image to grayscale.
         """
         return Im(self.image.convert("L"))
+
+    def as_binary(self):
+        """
+        Converts image to binary.
+        """
+        return Im(self.image.convert("1"))
 
     def plot_masked_image(self, mask, scaling_factor=0.6, color="yellow", plot=True):
         """
